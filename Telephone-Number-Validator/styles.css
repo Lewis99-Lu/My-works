@@ -1,0 +1,69 @@
+*,*::after,*::before{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-align: center;   
+    background-color: cadetblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#title{
+    margin-top: 90px;
+    margin-bottom: 40px;
+}
+#inputTitle{
+    color: black;
+    font-size: larger;
+    text-wrap: wrap;
+    background-color: aliceblue;
+}
+#phoneOutside{
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: black;
+    max-width: 250px;
+    height:500px ;
+    padding: 5px;
+    margin: auto;
+}
+#phoneInside{
+    border-radius: 10px;
+    margin: 30px 5px 10px 5px;
+    height:400px ;
+    padding: 10px;
+    background-color: aliceblue;
+    display: flex;  
+    flex-direction: column;
+}
+#user-input{
+    background-color: white;
+    height: 40px;
+    size: 200px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+#results-div{
+    font-size: 25px;
+    margin-top: 40px;
+    background-color: aliceblue;
+    display: hidden;
+}
+#btnArea{
+    background-color: black;
+    display:flex ;
+    justify-content: space-around;
+    align-items: center;
+}
+button{
+    background-color: white;
+    border-radius: 10px;
+    width: 90px;
+    height: 40px;
+    box-shadow: 0 0 10px gray;
+}
+button:hover{
+    background-color: white;
+    border-radius: 10px;
+    width: 90px;
+    height: 40px;
+    box-shadow: 0 0 10px red;
+}
