@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        收銀機
+    </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2 id="main-title">
+        Cash Register
+    </h2>
+    <div id="main-area">
+        <div id="change-due"></div>
+        <form id="form-area">
+            <label for="cash">
+                Enter cash
+            </label>
+            <input type="number" id="cash"/>
+            <Button type="button" id="purchase-btn">
+                Purchase
+            </Button>
+        </form>
+    </div>
+    <div id="register">
+        <section id="register-main">
+            <div id="register-head"></div>
+            <div id="register-head2"></div>
+            <div id="register-body">
+                <section id="show-draw">
+                    Change in drawer:
+                </section>
+            </div>
+        </section>
+        <section id="draw">
+            <div id="draw-handle"></div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

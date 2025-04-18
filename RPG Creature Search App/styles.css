@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif    ;
+}
+body{  
+    background-color: rgb(155, 155, 190);
+}
+#title{
+    font-size: 30px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+#main-area{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #bebcbc;
+}
+label{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+#search-input{
+    background-color: white;
+    max-width: 200px;
+    height: 45px;
+}
+#search-button{
+    border-radius: 15px;
+    height: 45px;
+    max-width: 120px;
+}

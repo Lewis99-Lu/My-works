@@ -1,0 +1,128 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color: #9fa09b;
+}
+
+h2{
+    font-size: 50px;
+    margin-top: 5%;
+    margin-bottom: 50px;
+}
+
+#main-area{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 300px;
+    margin-bottom: 50px;
+}
+
+#change-due{
+    font-size: 20px;
+}
+
+#form-area{
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 150px;
+}
+
+#cash{
+    height: 30px;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #ffffff;
+}
+
+#purchase-btn{
+    font-weight: 700;
+    background-color: #ffffff;
+    font-size: 13px;
+    height: 30px;
+    width: 75px;
+    border: 3px solid white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0px 2px black;
+}
+
+#purchase-btn:hover{
+    cursor: pointer;
+}
+
+#purchase-btn:active{
+    box-shadow: 1px 1px black ;
+}
+
+#register{
+    margin: auto;
+    max-width: 400px;
+}
+
+#register-head{
+    margin: auto;
+    background-color: #fff;
+    color: #000000;
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border: 7px solid blue;
+    line-height: 37.5px;
+}
+
+#register-head2{
+    background-color: blue;
+    margin-left: 140px;
+    width: 40px;
+    height: 35px;
+}
+
+#register-body{
+    margin: auto;
+    background-color: blue;
+    height:250px;
+    width: 300px;
+    border-radius: 25px 25px 0px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#show-draw{
+    background-color: #fff;
+    height: 220px;
+    width: 180px;
+    margin-right: 20px;
+}
+
+#show-draw:first-child{
+    font-weight: 700;
+}
+
+#draw{
+    background-color: blue;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#draw-handle{
+    height: 30px;
+    width: 30px;
+    border: black solid;
+    border-radius: 50%;
+    background-color: #000000;
+}

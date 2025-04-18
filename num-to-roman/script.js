@@ -38,7 +38,7 @@ const showResult = (input)=>{
         output.innerText = "Please enter a number greater than or equal to 1"
         input.value = ''
         return       
-    }//檢查是否大於3999檢查是否大於3999
+    }//檢查是否大於3999
     else if(inputVal >= 4000){
         output.style.display = 'block'
         output.innerText = "Please enter a number less than or equal to 3999"
