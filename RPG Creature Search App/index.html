@@ -9,44 +9,57 @@
 <body>
     <h2 id="title">RPG Creature Search App</h2>
     <div id="main-area">
-        <label for="search-input">Search for Creature Name or ID:</label>
-        <input type="text" id="search-input">
-        <button type="button" id="search-button">Search</button>
+        <form id="search-area">
+            <label for="search-input">Search for Creature Name or ID:</label>
+            <input type="text" id="search-input" required placeholder="Creature Name or ID" name="creature-id">
+            <button type="button" id="search-button">Search</button>
+        </form>
         <div id="show-area">
-            <h2 id="creature-name">1</h2><p id="creature-id">1</p>
-            <p id="weight">1</p><p id="height">1</p>
-            <div id="types">1</div>
+            <div id='basic-information'>
+                <span id="creature-name"></span>
+                <span id="creature-id"></span>
+                <div id="weight-height">
+                    <span id="weight"></span>
+                    <span id="height"></span>
+                </div>
+            </div>
+            <div id="types"></div>
+            <div id="special-area">
+                <div id="special-name"></div>
+                <div id="special-description"></div>
+            </div>
         </div>
         <table id="creature-information">
             <tr>
-                <td>Base</td>
-                <td>Stats</td>
+                <th>Base</th>
+                <th>Stats</th>
             </tr>
             <tr>
-                <td>HP:</td>
+                <th>HP:</th>
                 <td id="hp"></td>
             </tr>
             <tr>
-                <td>Attack:</td>
+                <th>Attack:</th>
                 <td id="attack"></td>
             </tr>
             <tr>
-                <td>Defense:</td>
+                <th>Defense:</th>
                 <td id="defense"></td>
             </tr>
             <tr>
-                <td>Sp. Attack:</td>
+                <th>Sp. Attack:</th>
                 <td id="special-attack"></td>
             </tr>
             <tr>
-                <td>Sp. Defense:</td>
+                <th>Sp. Defense:</th>
                 <td id="special-defense"></td>
             </tr>
             <tr>
-                <td>Speed:</td>
+                <th>Speed:</th>
                 <td id="speed"></td>
             </tr>
         </table>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
