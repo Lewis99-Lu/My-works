@@ -1,8 +1,8 @@
 <script setup>
-import layOut from './myCreate/layOut.vue';
+import searchApp from './myCreate/searchApp.vue';
 </script>
 
 <template>
-  <layOut/>
+  <searchApp />
 </template>
 

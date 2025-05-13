@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="row">
-      <div id='outer' class="col-18">
+      <div class="col-12">
       <h2 id="title" >RPG Creature Search App</h2>
       <div id="main-area">
         <form id="search-area">
           <label for="search-input">Search for Creature Name or ID:</label>
-          <input type="text"  id="search-input"  required  placeholder="Creature Name or ID"  name="creature-id"/>
-          <button type="button">Search</button>
+          <input type="text" v-model="userInput" id="search-input" required placeholder="Creature Name or ID" name="creature-id"/>
+          <button type="button" @click="">Search</button>
         </form>
         <div id="show-area">
           <div id="basic-information">
@@ -62,15 +62,53 @@
   </div>   
 </template>
 
-<script setup name="layOut">
+<script setup name="searchApp">
+  import axios from 'axios'
+  import { ref, onMounted } from 'vue'
+
+  let allCreatureIdAndName = ref([])
+  let creatureDetails = ref({})
+  let userInput = ref()
+  //發送請求獲取全部的id和name
+  const getCreatureIdAndName = async () => {
+    try{
+      const idAndNameArr = await axios.get('https://rpg-creature-api.freecodecamp.rocks/api/creatures')
+      allCreatureIdAndName.value = idAndNameArr.data
+      console.log(allCreatureIdAndName.value)
+    }catch(error){
+      alert(error) 
+    }
+  }
+  //頁面掛載時就發送請求
+  onMounted(getCreatureIdAndName)
+  
+  const getCreatureDetails = async (userInput) => {
+    let userInputNum = parseInt(userInput.value)
+    try{
+      if(!isNaN(userInputNum)){
+        const creatureDetailsData = await axios.get(`https://rpg-creature-api.freecodecamp.rocks/api/creature/${userInputNum}`)
+        creatureDetails.value = creatureDetailsData.data
+      }else{
+        const creatureDetailsData = await axios.get(`https://rpg-creature-api.freecodecamp.rocks/api/creature/${userInput.value}`)
+        creatureDetails.value = creatureDetailsData.data
+      }
+    }catch(error){
+      
+    }
+
+    const showCreatureInfo = () => {
+      
+    }
+    
+  }
+
+  
 </script>
 
 <style scoped>
-  #outer{
-    background-color: rgb(155, 155, 190);
-  }
 
-  #normal {
+
+#normal {
 background-color: #b7b7aa;
 }
 
