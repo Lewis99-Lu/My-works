@@ -1,60 +1,45 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12  justify-content-center">
       <h2 id="title" >RPG Creature Search App</h2>
-      <div id="main-area">
-        <form id="search-area">
-          <label for="search-input">Search for Creature Name or ID:</label>
-          <input type="text" v-model="userInput" id="search-input" required placeholder="Creature Name or ID" name="creature-id"/>
-          <button type="button" @click="">Search</button>
+      <div>
+        <form>
+          <label for="search-input">Search for Creature Name orID:</label>
+          <input type="text" v-model="userInput" id="search-input" required placeholder="Creature Name orID" name="creature-id"/>
+          <button type="button" @click='() => getCreatureDetails(userInput)'>Search</button>
         </form>
-        <div id="show-area">
-          <div id="basic-information">
-            <span id="creature-name"></span>
-            <span id="creature-id"></span>
+        <div>
+          <div>
+            <span>{{ creatureDetails?.name }}</span>
+            <span>#{{ creatureDetails?.id }}</span>
             <div id="weight-height">
-              <span id="weight">Weight: </span>
-              <span id="height">Height: </span>
+              <span>Weight: {{ creatureDetails?.weight }}</span>
+              <span>Height: {{ creatureDetails?.height }}</span>
             </div>
           </div>
-          <div id="types">
-            <span></span>
+          <div>
+            <span>{{}}</span>
           </div>
           <div id="special-area">
-            <div id="special-name"></div>
-            <div id="special-description"></div>
+            <div>{{creatureDetails.special?.name}}</div>
+            <div>{{creatureDetails.special?.description}}</div>
           </div>
         </div>
-        <table id="creature-information">
-          <tr>
-            <th>Base</th>
-            <th>Stats</th>
-          </tr>
-          <tr>
-            <th>HP:</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>Attack:</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>Defense:</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>Sp. Attack:</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>Sp. Defense:</th>
-            <td></td>
-          </tr>
-          <tr>
-            <th>Speed:</th>
-            <td></td>
-          </tr>
+        <table id="creature-information" v-if="creatureDetails.stats">
+          <thead>
+            <tr>
+              <th>Base</th>
+              <th>Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(stat,index) in creatureDetails.stats" :key="index">
+              <td>{{stat.name}}</td>
+              <td>{{stat.base_stat}}</td>
+            </tr>
+          </tbody>
+          
         </table>
       </div>
       </div>
@@ -64,25 +49,12 @@
 
 <script setup name="searchApp">
   import axios from 'axios'
-  import { ref, onMounted } from 'vue'
+  import { ref } from 'vue'
 
-  let allCreatureIdAndName = ref([])
   let creatureDetails = ref({})
   let userInput = ref()
-  //發送請求獲取全部的id和name
-  const getCreatureIdAndName = async () => {
-    try{
-      const idAndNameArr = await axios.get('https://rpg-creature-api.freecodecamp.rocks/api/creatures')
-      allCreatureIdAndName.value = idAndNameArr.data
-      console.log(allCreatureIdAndName.value)
-    }catch(error){
-      alert(error) 
-    }
-  }
-  //頁面掛載時就發送請求
-  onMounted(getCreatureIdAndName)
   
-  const getCreatureDetails = async (userInput) => {
+  const getCreatureDetails = async () => {
     let userInputNum = parseInt(userInput.value)
     try{
       if(!isNaN(userInputNum)){
@@ -93,90 +65,83 @@
         creatureDetails.value = creatureDetailsData.data
       }
     }catch(error){
-      
+      alert("Creature not found")
     }
-
-    const showCreatureInfo = () => {
-      
-    }
-    
   }
 
   
 </script>
 
 <style scoped>
-
-
-#normal {
+.normal {
 background-color: #b7b7aa;
 }
 
-#fire {
+.fire {
 background-color: #ff6f52;
 }
 
-#water {
+.water {
 background-color: #42a1ff;
 }
 
-#electric {
+.electric {
 background-color: #fecc33;
 }
 
-#grass {
+.grass {
 background-color: #78cc55;
 }
 
-#ice {
+.ice {
 background-color: #66ccfe;
 }
 
-#fighting {
+.fighting {
 background-color: #d3887e;
 }
 
-#poison {
+.poison {
 background-color: #c68bb7;
 }
 
-#ground {
+.ground {
 background-color: #dfba52;
 }
 
-#flying {
+.flying {
 background-color: #8899ff;
 }
 
-#psychic {
+.psychic {
 background-color: #ff66a3;
 }
 
-#bug {
+.bug {
 background-color: #aabb23;
 }
 
-#rock {
+.rock {
 background-color: #baaa66;
 }
 
-#ghost {
+.ghost {
 background-color: #9995d0;
 }
 
-#dragon {
+.dragon {
 background-color: #9e93f1;
 }
 
-#dark {
+.dark {
 background-color: #b59682;
 }
 
-#steel {
+.steel {
 background-color: #abaabb;
 }
 
-#fairy {
+.fairy {
 background-color: #ed99ed;
 }
 </style>
