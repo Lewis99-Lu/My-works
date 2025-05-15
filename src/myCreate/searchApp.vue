@@ -1,50 +1,49 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-12  justify-content-center">
-      <h2 id="title" >RPG Creature Search App</h2>
-      <div>
-        <form>
-          <label for="search-input">Search for Creature Name orID:</label>
-          <input type="text" v-model="userInput" id="search-input" required placeholder="Creature Name orID" name="creature-id"/>
-          <button type="button" @click='() => getCreatureDetails(userInput)'>Search</button>
-        </form>
+    <div class="row" style="width: 400px">
+      <div class="col border border-3 rounded p-2 bg-light">
         <div>
-          <div>
-            <span>{{ creatureDetails?.name }}</span>
-            <span>#{{ creatureDetails?.id }}</span>
-            <div id="weight-height">
-              <span>Weight: {{ creatureDetails?.weight }}</span>
-              <span>Height: {{ creatureDetails?.height }}</span>
+          <h2 id="title" class="mb-3 text-center">RPG Creature Search App</h2>
+          <form class="form-floating mb-3">
+            <input type="text" class="form-control mb-2 text-center" id="floatingInput" v-model="userInput" required placeholder="Creature Name orID" name="creature-id"/>
+            <label for="floatingInput">Search for Creature Name or ID:</label>
+            <button type="button" class="btn btn-success" @click='getCreatureDetails'>Search</button>
+          </form>
+          <div class="mb-3">
+            <div class="mb-2">
+              <span class="h5 me-1">{{ creatureDetails?.name }}</span>
+              <span v-show="creatureDetails" class="h6">#{{ creatureDetails.id }}</span>
+            <div>
+              <span class="me-2 h6">Weight: {{ creatureDetails?.weight }}</span>
+              <span class="h6">Height: {{ creatureDetails?.height }}</span>
             </div>
           </div>
+          <div class="mb-2">
+            <span v-for="(type,index) in creatureDetails.types" :key="index" class="me-2 p-1 rounded" :id="type.name">{{type.name}}</span>
+          </div>
           <div>
-            <span>{{}}</span>
+            <div class="h6">{{ creatureDetails.special?.name }}</div>
+            <div class="text-wrap">{{ creatureDetails.special?.description }}</div>
           </div>
-          <div id="special-area">
-            <div>{{creatureDetails.special?.name}}</div>
-            <div>{{creatureDetails.special?.description}}</div>
           </div>
-        </div>
-        <table id="creature-information" v-if="creatureDetails.stats">
-          <thead>
+          <table class="text-center m-auto table table-info table-bordered">
+            <thead>
             <tr>
-              <th>Base</th>
-              <th>Stats</th>
+              <th class="h5">Base</th>
+              <th class="h5">Stats</th>
             </tr>
-          </thead>
-          <tbody>
+            </thead>
+            <tbody>
             <tr v-for="(stat,index) in creatureDetails.stats" :key="index">
-              <td>{{stat.name}}</td>
-              <td>{{stat.base_stat}}</td>
+              <td class="h6 text-capitalize">{{ stat.name }}</td>
+              <td>{{ stat.base_stat }}</td>
             </tr>
-          </tbody>
-          
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
-      </div>
-    </div>
-  </div>   
+    </div>    
+  </div>
 </template>
 
 <script setup name="searchApp">
@@ -53,7 +52,7 @@
 
   let creatureDetails = ref({})
   let userInput = ref()
-  
+  let input = ref()
   const getCreatureDetails = async () => {
     let userInputNum = parseInt(userInput.value)
     try{
@@ -69,79 +68,78 @@
     }
   }
 
-  
 </script>
 
 <style scoped>
-.normal {
+#normal {
 background-color: #b7b7aa;
 }
 
-.fire {
+#fire {
 background-color: #ff6f52;
 }
 
-.water {
+#water {
 background-color: #42a1ff;
 }
 
-.electric {
+#electric {
 background-color: #fecc33;
 }
 
-.grass {
+#grass {
 background-color: #78cc55;
 }
 
-.ice {
+#ice {
 background-color: #66ccfe;
 }
 
-.fighting {
+#fighting {
 background-color: #d3887e;
 }
 
-.poison {
+#poison {
 background-color: #c68bb7;
 }
 
-.ground {
+#ground {
 background-color: #dfba52;
 }
 
-.flying {
+#flying {
 background-color: #8899ff;
 }
 
-.psychic {
+#psychic {
 background-color: #ff66a3;
 }
 
-.bug {
+#bug {
 background-color: #aabb23;
 }
 
-.rock {
+#rock {
 background-color: #baaa66;
 }
 
-.ghost {
+#ghost {
 background-color: #9995d0;
 }
 
-.dragon {
+#dragon {
 background-color: #9e93f1;
 }
 
-.dark {
+#dark {
 background-color: #b59682;
 }
 
-.steel {
+#steel {
 background-color: #abaabb;
 }
 
-.fairy {
+#fairy {
 background-color: #ed99ed;
 }
 </style>
