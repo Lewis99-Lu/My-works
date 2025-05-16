@@ -74,6 +74,7 @@ class Register {
       let [cashName, cashTotal, cashValue] = cash
       let originCashIndex = this.drawerCash.findIndex((cash) => cash[0] === cashName)
       // //如果當前幣值小於等於找錢以及當前現金總值還有現金，才用當前幣值找錢
+      //未完成需修改
       while(change >= cashValue && cashTotal > 0){
         let exitCash = changeArr.findIndex((changeCash) => changeCash[0] === cashName)
         if(exitCash === -1 && cashTotal > change){
